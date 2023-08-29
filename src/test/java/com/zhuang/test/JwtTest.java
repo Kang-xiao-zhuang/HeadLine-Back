@@ -5,12 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-/**
- * projectName: com.atguigu.test
- *
- * @author: 赵伟风
- * description:
- */
+
 @SpringBootTest
 public class JwtTest {
 

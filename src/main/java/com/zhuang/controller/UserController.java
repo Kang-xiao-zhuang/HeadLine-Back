@@ -58,5 +58,4 @@ public class UserController {
         return Result.ok(null);
     }
 
-
 }

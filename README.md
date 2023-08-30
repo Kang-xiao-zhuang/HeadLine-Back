@@ -107,7 +107,7 @@ npm run dev
 
 执行数据库脚本:
 
-[top\_news.sql](file/top_news_tOm1rnSjEc.sql "top_news.sql")
+[top\_news.sql](file/top_news_tOm1rnSjEc.sql "top_news_8.0.sql")
 
 ```sql
 CREATE DATABASE sm_db;

@@ -9,9 +9,9 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
-      url: jdbc:mysql:///sm_db1
+      url: jdbc:mysql://101.43.21.132:3307/sm_db?serverTimezone=GMT%2B8&useSSL=false&characterEncoding=utf-8
       username: root
-      password: root
+      password: 123456
       driver-class-name: com.mysql.cj.jdbc.Driver
 
 # mybatis-plus的配置

@@ -39,8 +39,8 @@ public class HeadlineServiceImpl extends ServiceImpl<HeadlineMapper, Headline>
      * 注意1： 查询需要自定义语句 自定义mapper的方法，携带分页
      * 注意2： 返回的结果List<Map>
      *
-     * @param portalVo
-     * @return
+     * @param portalVo PortalVo
+     * @return Result
      */
     @Override
     public Result findNewsPage(PortalVo portalVo) {
@@ -49,7 +49,7 @@ public class HeadlineServiceImpl extends ServiceImpl<HeadlineMapper, Headline>
         IPage<Map> page = new Page<>(portalVo.getPageNum(), portalVo.getPageSize());
         headlineMapper.selectMyPage(page, portalVo);
 
-        Map data = new HashMap();
+        Map<String, Object> data = new HashMap<>();
 
         data.put("pageData", page.getRecords());
         data.put("pageNum", page.getCurrent());
@@ -57,7 +57,7 @@ public class HeadlineServiceImpl extends ServiceImpl<HeadlineMapper, Headline>
         data.put("totalPage", page.getPages());
         data.put("totalSize", page.getTotal());
 
-        Map pageInfo = new HashMap();
+        Map<String, Object> pageInfo = new HashMap<>();
         pageInfo.put("pageInfo", data);
 
         return Result.ok(pageInfo);
@@ -71,14 +71,14 @@ public class HeadlineServiceImpl extends ServiceImpl<HeadlineMapper, Headline>
      * 2、查询对应的数据即可 【多表，头条和用户表，方法需要自定义 返回map即可】
      * 1、修改阅读量 + 1  【version乐观锁，当前数据对应的版本】
      *
-     * @param hid
-     * @return
+     * @param hid Integer
+     * @return Result
      */
     @Override
     public Result showHeadlineDetail(Integer hid) {
 
         Map data = headlineMapper.queryDetailMap(hid);
-        Map headlineMap = new HashMap();
+        Map<String, Object> headlineMap = new HashMap<>();
         headlineMap.put("headline", data);
 
         //修改阅读量 + 1
@@ -97,8 +97,8 @@ public class HeadlineServiceImpl extends ServiceImpl<HeadlineMapper, Headline>
      * <p>
      * 1. 补全数据
      *
-     * @param headline
-     * @return
+     * @param headline Headline
+     * @return String
      */
     @Override
     public Result publish(Headline headline, String token) {
@@ -123,8 +123,8 @@ public class HeadlineServiceImpl extends ServiceImpl<HeadlineMapper, Headline>
      * 1.hid查询数据的最新version
      * 2.修改数据的修改时间为当前节点
      *
-     * @param headline
-     * @return
+     * @param headline Headline
+     * @return Result
      */
     @Override
     public Result updateData(Headline headline) {

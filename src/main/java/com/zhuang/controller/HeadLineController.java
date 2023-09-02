@@ -18,7 +18,6 @@ public class HeadLineController {
     @Autowired
     private HeadlineService headlineService;
 
-
     //登录以后才可以访问
     @PostMapping("publish")
     public Result publish(@RequestBody Headline headline, @RequestHeader String token) {

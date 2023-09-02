@@ -23,7 +23,7 @@ public class TypeServiceImpl extends ServiceImpl<TypeMapper, Type>
     /**
      * 查询所有类别数据
      *
-     * @return
+     * @return Result
      */
     @Override
     public Result findAllTypes() {

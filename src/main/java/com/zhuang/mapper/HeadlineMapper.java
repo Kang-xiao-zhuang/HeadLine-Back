@@ -11,7 +11,8 @@ import java.util.Map;
 
 /**
  * 针对表【news_headline】的数据库操作Mapper
-*/
+ */
+@Mapper
 public interface HeadlineMapper extends BaseMapper<Headline> {
 
     IPage<Map> selectMyPage(IPage<Map> page, @Param("portalVo") PortalVo portalVo);

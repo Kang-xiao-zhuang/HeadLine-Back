@@ -37,8 +37,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
      * 3.对比，密码 ，失败 返回503的错误
      * 4.根据用户id生成一个token, token -> result 返回
      *
-     * @param user
-     * @return
+     * @param user User
+     * @return Result
      */
     @Override
     public Result login(User user) {
@@ -58,7 +58,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
             //根据用户id生成 token
             String token = jwtHelper.createToken(Long.valueOf(loginUser.getUid()));
             //将token封装到result返回
-            Map data = new HashMap();
+            Map<String, Object> data = new HashMap<>();
             data.put("token", token);
             return Result.ok(data);
         }
@@ -76,8 +76,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
      * 3. 根据用户id查询用数据
      * 4. 去掉密码，封装result结果返回即可
      *
-     * @param token
-     * @return
+     * @param token String
+     * @return Result
      */
     @Override
     public Result getUserInfo(String token) {
@@ -94,7 +94,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         User user = userMapper.selectById(userId);
         user.setUserPwd("");
 
-        Map data = new HashMap();
+        Map<String, Object> data = new HashMap<>();
         data.put("loginUser", user);
 
         return Result.ok(data);
@@ -108,7 +108,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
      * 3.count > 0 不可用
      *
      * @param username 账号
-     * @return
+     * @return Result
      */
     @Override
     public Result checkUserName(String username) {
@@ -132,8 +132,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
      * 3.账号数据保存
      * 4.返回结果
      *
-     * @param user
-     * @return
+     * @param user User
+     * @return Result
      */
     @Override
     public Result regist(User user) {
